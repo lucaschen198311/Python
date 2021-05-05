@@ -45,10 +45,10 @@ class User:
         self.account_type = account_type
         if self.name not in User.account_dict:
             User.account_dict[self.name] = {}
-        self.create_account()
-    def create_account(self):
-        if self.account_type not in User.account_dict[self.name]:
-            User.account_dict[self.name][self.account_type] = BankAccount(int_rate = 0.01, balance = 0)
+        self.create_account(self.account_type)
+    def create_account(self, account_type):
+        if account_type not in User.account_dict[self.name]:
+            User.account_dict[self.name][account_type] = BankAccount(int_rate = 0.01, balance = 0)
     def make_deposit(self, amount, account_type):
         if account_type in User.account_dict[self.name]:
             User.account_dict[self.name][account_type].deposit(amount)
@@ -67,7 +67,7 @@ class User:
 
 John = User("John", "john@gmail.com","Checking")
 print(John.account_dict)
-John = User("John", "john@gmail.com","Saving")
+John.create_account("Saving")
 print(John.account_dict)
 John.display_user_balance("Checking")
 John.display_user_balance("Saving")
