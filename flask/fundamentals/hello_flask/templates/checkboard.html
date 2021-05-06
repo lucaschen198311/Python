@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type= "text/css" href="{{ url_for('static', filename='css/checkboard.css') }}">
+    <style>
+        .color1{
+            background-color: {{ color_1 }};
+        }
+        .color2{
+            background-color: {{ color_2 }};
+        }
+    </style>
+    <title>CheckBoard</title>
+</head>
+<body>
+    <h1>{{ row }} x {{ col }} CheckBord</h1>
+    <div class="container">
+        <table>
+            {% for i in range(row): %}
+                <tr>
+                {% for j in range(col): %}
+                    <td class= "color{{ (i+j)%2 + 1 }}"></td>
+                {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

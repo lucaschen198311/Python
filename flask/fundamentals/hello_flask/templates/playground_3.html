@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlayGround_3</title>
+    <style>
+        .block{
+            width:200px;
+            height:200px; 
+            margin:10px;
+            background-color: {{ background }};
+        }
+    </style>
+</head>
+<body>
+    <h1 style="width:900px;text-align: center; color:black;">Welcome!</h1>
+    <div class="containers" style="width:900px;display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">
+        {% for i in range(replicate): %}
+            <div class="block"></div>
+        {% endfor %}
+    </div>
+</body>
+</html>
