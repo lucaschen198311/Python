@@ -1,0 +1,24 @@
+.container{
+    width:60%;
+    margin:auto;
+    border:1px solid lightgray;
+    text-align: left;
+}
+
+table, td, th {
+    border: 1px solid black;
+  }
+
+th{
+    background-color: darkgray;
+}
+
+table{
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.container a{
+    text-align: left;
+    
+}
