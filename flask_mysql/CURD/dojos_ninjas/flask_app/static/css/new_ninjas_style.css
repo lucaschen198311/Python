@@ -1,0 +1,27 @@
+.container{
+    width:50%;
+    border:1px solid lightgray;
+    padding-left:20px;
+}
+
+.form_line{
+    margin-top: 20px;
+}
+#age{
+    margin-left:142px;
+}
+#button{
+    margin:20px 0px 0px 180px;
+    box-shadow: 5px 3px 3px black;;
+}
+input{
+    margin-left:100px;
+}
+
+select{
+    margin-left:140px;
+}
+
+a{
+    font-size: 15px;
+}

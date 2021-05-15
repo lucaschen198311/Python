@@ -1,0 +1,31 @@
+.container{
+    display:flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: auto;
+    width:70%;
+    border:1px solid lightgray;
+}
+
+.dojo_add{
+    margin-bottom:100px;
+}
+
+.dojo_add form section {
+    margin-top: 30px;
+}
+
+.dojo_list{
+    margin-top: 30px;
+}
+
+.dojo_list ul{
+    border:1px solid black;
+    padding-left: 15px;
+    width:200px;
+    list-style-type: none;
+}
+
+section input{
+    box-shadow: 5px 3px 3px black;
+}
