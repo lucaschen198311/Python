@@ -1,0 +1,21 @@
+.container{
+    width:60%;
+    border:1px solid lightgray;
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+    margin:auto;
+}
+
+.add_book_fav{
+    margin-bottom: 15px;
+}
+
+.button {
+    box-shadow: 5px 3px 2px black;
+    margin: 5px 0px 0px 60px;
+}
+
+section{
+    padding-bottom: 20px;
+}

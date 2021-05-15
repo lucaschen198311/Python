@@ -1,0 +1,42 @@
+.container{
+    width:60%;
+    border:1px solid lightgray;
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+    margin:auto;
+}
+
+.new_book{
+    margin-bottom: 10px;
+}
+
+.button {
+    box-shadow: 5px 3px 2px black;
+    margin: 5px 0px 0px 120px;
+}
+
+.all_books ul{
+    list-style-type: none;
+    padding-left:5px;
+    border:1px solid black;
+    margin-top:5px;
+    font-size: 15px;
+}
+
+#title{
+    margin-left:80px;
+}
+
+section{
+    padding-top:20px;
+}
+
+h2{
+    margin-bottom: 5px;
+}
+
+a{
+    font-size: 15px;
+    text-align: left;
+}

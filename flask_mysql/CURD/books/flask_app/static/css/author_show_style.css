@@ -1,0 +1,30 @@
+.container{
+    width:60%;
+    border:1px solid lightgray;
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+    margin:auto;
+}
+
+.add_author_fav{
+    margin-bottom: 50px;
+}
+
+.button input{
+    box-shadow: 5px 3px 2px black;
+    margin: 20px 0px 0px 45px;
+}
+
+table, td, th {
+    border: 1px solid black;
+  }
+
+th{
+    background-color: darkgray;
+}
+
+table{
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
