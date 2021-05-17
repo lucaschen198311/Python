@@ -10,13 +10,15 @@
 <body>
     <div class="container">
         <div class="book_title">
-            <h2>Title: {{book_favs[0].title}}</h2>
-            <p>Favorited by:</p>
-            <ul>
-                {% for fav in book_favs %}
-                    <li>{{fav.name}}</li>
-                {% endfor %}
-            </ul>
+            <h2>Title: {{book[0].title}}</h2>
+            {% if book_favs | length >0%}
+                <p>Favorited by:</p>
+                <ul>
+                    {% for fav in book_favs %}
+                        <li>{{fav.name}}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
             <a href="/authors">Home</a>
         </div>
         <div class="add_book_fav">

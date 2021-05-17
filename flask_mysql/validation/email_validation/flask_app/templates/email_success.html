@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/email_success.css') }}">
+    <title>Email Validate Success</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <p>The email address you entered is a valid email address! Thank you!</p>
+        </header>
+        <h3>Email Addresses Entered: </h3>
+        <ul>
+            {% for email in email_list %}
+                <li><span>{{email.email}}   </span><span>{{email.created_at}}</span></li>
+            {% endfor %}
+        </ul>
+        <a href="/">Go Back</a>
+    </div>
+</body>
+</html>

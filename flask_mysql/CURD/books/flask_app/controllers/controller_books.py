@@ -26,10 +26,12 @@ def show_book_fav(book_id):
         "book_id" : book_id
     }
     book_favs = Author.book_fav_authors(data)
+    book = Book.get_book(data)
+    print(book)
     print(book_favs)
     author_list_not_fav = Author.authors_not_favs(data)
     print(author_list_not_fav)
-    return render_template("book_show.html", book_favs=book_favs, author_list_not_fav=author_list_not_fav)
+    return render_template("book_show.html", book = book, book_favs=book_favs, author_list_not_fav=author_list_not_fav)
 
 @app.route("/books/add_book_fav", methods=["POST"])
 def add_book_favauthor():

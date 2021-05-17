@@ -21,10 +21,10 @@ class Book:
         return new_id
     
     @classmethod
-    def get_book_id(cls, data):
-        query = 'SELECT id FROM books WHERE title = %(title)s;'
-        book_id = connectToMySQL('books').query_db(query, data)
-        return book_id
+    def get_book(cls, data):
+        query = 'SELECT * FROM books WHERE id = %(book_id)s;'
+        book = connectToMySQL('books').query_db(query, data)
+        return book
     
     @classmethod
     def author_fav_books(cls, data):

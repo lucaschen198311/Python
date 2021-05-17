@@ -10,23 +10,25 @@
 <body>
     <div class="container">
         <div class="author_fav">
-            <h2>{{author_favs[0].name}}'s favorates</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th># of pages</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for fav in author_favs %}
+            <h2>{{author[0].name}}'s favorates</h2>
+            {% if authors_favs | length >0%}
+                <table>
+                    <thead>
                         <tr>
-                            <td>{{fav.title}}</td>
-                            <td>{{fav.num_of_pages}}</td>
+                            <th>Title</th>
+                            <th># of pages</th>
                         </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {% for fav in author_favs %}
+                            <tr>
+                                <td>{{fav.title}}</td>
+                                <td>{{fav.num_of_pages}}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}    
             <a href="/authors">Home</a>
         </div>
         <div class="add_author_fav">

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/email_validate.css') }}">
+    <title>Email Validate</title>
+</head>
+<body>
+    <div class="container">
+        {% with messages = get_flashed_messages() %}      
+            {% if messages %}
+                <header>
+                    {% for message in messages %}             
+                        <p>{{message}}</p>                    
+                    {% endfor %}
+                </header>                             
+            {% endif %}
+        {% endwith %}
+        <form action="/email_validate" method = "post">
+            <label for="email">Email Address</label>
+            <input type="text" name='email'>
+            <div class="submit">
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
+</body>
+</html>

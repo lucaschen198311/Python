@@ -14,6 +14,12 @@ class Author:
         return authors_from_db
     
     @classmethod
+    def get_author(cls, data):
+        query = 'SELECT * FROM authors WHERE id = %(author_id)s;'
+        book = connectToMySQL('books').query_db(query, data)
+        return book
+    
+    @classmethod
     def insert_one(cls, data):
         query = 'INSERT INTO authors (name) VALUES(%(name)s);'
         new_id = connectToMySQL('books').query_db(query, data)

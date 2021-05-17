@@ -24,11 +24,12 @@ def show_author_fav(author_id):
     data = {
         "author_id" : author_id
     }
+    author = Author.get_author(data)
     author_favs = Book.author_fav_books(data)
     print(author_favs)
     book_list_not_fav = Book.books_not_favs(data)
     print(book_list_not_fav)
-    return render_template("author_show.html", author_favs=author_favs, book_list_not_fav=book_list_not_fav)
+    return render_template("author_show.html", author=author, author_favs=author_favs, book_list_not_fav=book_list_not_fav)
 
 @app.route("/authors/add_author_fav", methods=["POST"])
 def add_author_favebook():
