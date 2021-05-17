@@ -1,0 +1,67 @@
+.container{
+    height:500px;
+    width:500px;
+    border: 1px solid black;
+    background-color: lightgray;
+    margin: auto;
+}
+
+header{
+    background-color: lightgreen;
+    font-size: large;
+    color:red;
+}
+
+p{
+    padding-right:180px;
+}
+
+form{
+    padding-top: 50px;
+    text-align: center;
+}
+
+textarea{
+    width: 300px;
+
+}
+
+input, select{
+    height:20px;
+    width:150px;
+}
+
+.name label{
+    padding-right:100px;
+}
+
+.location label{
+    padding-right: 55px;
+}
+
+.language label{
+    padding-right: 35px;
+}
+
+.name, .location, .language{
+    padding: 10px;
+}
+
+.form{
+    padding:10px;
+}
+
+.button{
+    height:50px;
+    margin-top:50px;
+}
+
+.button #submit{
+    box-shadow: 5px 5px black;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: #00adb5;
+    height:40px;
+    width:100px;
+    margin-left:200px;
+}

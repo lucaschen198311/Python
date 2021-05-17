@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type = "text/css" href="{{ url_for('static', filename='css/dojo_survey_show.css')}}">
+    <title>Dojo Survey Result</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Submitted Info</h2>
+        <p>Name: <span id="name">{{ data.name }}</span></p>
+        <p>Dojo Location: <span id = "location">{{ data.location }}</span></p>
+        <p>Favorite language: <span id = "language">{{ data.language }}</span></p>
+        <p>Comment: <span id = "comment">{{ data.comment }}</span></p>
+        <a href="/">Go Back</a>
+    </div>
+</body>
+</html>
