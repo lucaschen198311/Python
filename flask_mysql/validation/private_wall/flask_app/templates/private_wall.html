@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/private_wall_style.css') }}">
+    <title>Private Wall</title>
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <h1>Coding Dojo Wall</h1>
+            <div class="navlink">
+                <h2>Welcome, {{first_name}}</h2>
+                <a href="/logout">Log Out</a>
+            </div>
+        </div>
+        <hr>
+        <div class="main">
+            <div class="show_message">
+                <h4><span>{{total_received[0].total_received}}</span> Message(s) for You: </h4>
+                {% if total_received[0].total_received >0 %}
+                    {% for message in messages %}
+                        <div class="message_list">
+                            <section>
+                                {% if message.month|int >0 %}
+                                    <p>{{message.first_name}} said ({{message.month}} month(s) ago):</p>
+                                {% elif message.day|int >0 %}
+                                    <p>{{message.first_name}} said ({{message.day}} day(s) ago):</p>
+                                {% elif message.hour|int >0  %}
+                                    <p>{{message.first_name}} said ({{message.hour}} hour(s) ago):</p>
+                                {% else %}
+                                    <p>{{message.first_name}} said ({{message.minute}} minute(s) ago):</p>
+                                {% endif %}
+                                <p>"{{message.content}}"</p>
+                            </section>
+                            <a href="/login/delete/{{message.id}}"><i>&#x1F5D1</i></a>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="send_message">
+                <h4>Send Messages</h4>
+                <p>You have sent {{total_sent[0].total_sent}} messages so far. </p>
+                {% if account_list | length >0 %}
+                    {% for account in account_list %}
+                        <div class="users">
+                            <form action="/login/send" method = "post">
+                                <input type="hidden" name="which_form" value="{{account.id}}">
+                                <label for="{{account.first_name}}">{{account.first_name}}</label>
+                                <input type="text" name="content">
+                                <input class="button" type="submit" value="Send">
+                            </form>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+        {% with messages = get_flashed_messages() %}      
+            {% if messages %}                             
+                {% for message in messages %}             
+                    <p>{{message}}</p>                    
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>
