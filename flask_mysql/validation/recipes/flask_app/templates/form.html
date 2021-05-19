@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/form_style.css') }}">
+    <title>Recipe Form</title>
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <h2>Add New Recipe</h2>
+            <div class="navlink">
+                <a href="/recipes">Dashboard</a>
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+        {% with messages = get_flashed_messages() %}      
+            {% if messages %}                             
+                {% for message in messages %}             
+                    <p>{{message}}</p>                    
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <div class="main">
+            <form action="/recipes/create" method = "post">
+                <section>
+                    <label for="name">Name: </label>
+                    <input type="text" name="name">
+                </section>
+                <section>
+                    <label for="description">Description: </label>
+                    <textarea name="description" id="description" cols="20" rows="3"></textarea>
+                </section>
+                <section>
+                    <label for="instruction">Instruction: </label>
+                    <textarea name="instruction" id="instruction" cols="30" rows="10"></textarea>
+                </section>
+                <section>
+                    <p>Under 30 mins: </p>
+                    <input type="radio" id="yes" value="Yes" name="under_thirtymin">
+                    <label for="check">Yes</label>
+                    <input type="radio" id="no" value="No" name="under_thirtymin">
+                    <label for="check">No</label>
+                </section>
+                <input class="button" type="submit" value="Create">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

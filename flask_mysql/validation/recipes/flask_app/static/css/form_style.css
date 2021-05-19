@@ -1,0 +1,43 @@
+.container{
+    width:60%;
+    border:1px solid black;
+    margin: auto;
+}
+
+.navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height:60px;
+    background-color:lightskyblue;
+}
+
+.navlink{
+    padding: 3px;
+    margin-right:20px;
+    width:150px;
+    justify-content: space-between;
+    display: flex;
+}
+
+.button{
+    box-shadow: 5px 3px 3px black;
+    font: bold 11px Arial;
+    text-decoration: none;
+    background-color: lightskyblue;
+    color: #333333;
+    padding: 5px 10px;
+    margin: 20px 0px 0px 130px;
+}
+
+section{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top:10px;
+}
+
+form{
+    margin:20px 0px 20px 10px;
+    width:50%;
+}
