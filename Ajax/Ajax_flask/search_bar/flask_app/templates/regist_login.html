@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/regist_login_style.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Registration and Login</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Registration and Login</h1>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul class=flashes>
+                    {% for category, message in messages %}
+                        <li class="{{ category }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        <div class="main">
+            <div class="regist">
+                <h2>Register here!</h2>
+                <div class="emailMsg"></div>
+                <form class="regist" action="/regist_validate" method = "post">
+                    <fieldset>
+                        <legend>
+                            <label for="first_name">First Name: </label>
+                        </legend>
+                        <input type="text" name="first_name">
+                    </fieldset>
+                    <fieldset>
+                        <legend>
+                            <label for="last_name">Last Name: </label>
+                        </legend>
+                        <input type="text" name="last_name">
+                    </fieldset>
+                    <fieldset>
+                        <legend>
+                            <label for="email">Email: </label>
+                        </legend>
+                        <input id="email" type="text" name="email">
+                    </fieldset>
+                    <fieldset>
+                        <legend>
+                            <label for="password">Password: </label>
+                        </legend>
+                        <input type="password" name="password">
+                    </fieldset>
+                    <fieldset>
+                        <legend>
+                            <label for="confirm password">Confirm Password: </label>
+                        </legend>
+                        <input type="password" name="confirm_password">
+                    </fieldset>
+                    <input class="button" type="submit" value="Register">
+                </form>
+                <div class="search_bar">
+                    <form class="name_search" method="GET" action="/namesearch">
+                        <input id="namesearch" type="text" name="name">
+                        <button type="submit">Search</button>
+                   </form>
+                   <div class="name_result"></div>
+                </div>
+            </div>
+            <div class="login">
+                <h2>Login here!</h2>
+                <form action="/login_validate" method="post">
+                    <fieldset>
+                        <legend>
+                            <label for="email">Email: </label>
+                        </legend>
+                        <input type="text" name="email">
+                    </fieldset>
+                    <fieldset>
+                        <legend>
+                            <label for="password">Password: </label>
+                        </legend>
+                        <input type="password" name="password">
+                    </fieldset>
+                    <input class="button" type="submit" value="Login">
+                </form>
+            </div>
+        </div>
+        <script src="{{ url_for('static', filename='js/regis.js') }}"></script>
+    </div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{% if pet_item | length>0 %}
+    <tr id="pet{{pet_item[0].id}}">
+        <td class="id">{{pet_item[0].id}}</td>
+        <td class="name">{{pet_item[0].name}}</td>
+        <td class="type">{{pet_item[0].type}}</td>
+        <td class="vote">{{pet_item[0].vote}}</td>
+        <td>
+            <a class="thumup" pet_id="{{pet_item[0].id}}" link="/upvote/{{pet_item[0].id}}">&#128077</a>
+            <a class="thumdown" pet_id="{{pet_item[0].id}}" link="/downvote/{{pet_item[0].id}}">&#128078</a>
+            <a class="delete" pet_id="{{pet_item[0].id}}" link="/delete/{{pet_item[0].id}}">&#128465</a>
+        </td>
+    </tr>
+{% endif %}

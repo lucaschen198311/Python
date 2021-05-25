@@ -1,0 +1,63 @@
+.container{
+    width:80%;
+    border:1px solid black;
+    margin: auto;
+    background-color:lightgray;
+}
+
+.main{
+    display: flex;
+    align-items: top;
+    justify-content: space-around;
+}
+
+.button{
+    box-shadow: 5px 3px 3px black;
+    font: bold 11px Arial;
+    text-decoration: none;
+    background-color: lightgreen;
+    color: #333333;
+    padding: 5px 10px;
+    margin: 20px 0px 0px 50px;
+}
+
+.login .button{
+    margin: 20px 0px 0px 60px;
+}
+
+.flashes{
+    background-color: lime;
+    width:60%;
+    margin: auto;
+}
+
+.name{
+    color:maroon;
+}
+.email{
+    color:blue;
+}
+.login{
+    color:crimson;
+}
+.password{
+    color:orange;
+}
+
+h1{
+    text-align: center;
+}
+
+fieldset{
+    margin-top: 10px;
+    border:none;
+    padding-left:0px;
+}
+
+.warning{
+    color:red;
+}
+
+.success{
+    color:green;
+}

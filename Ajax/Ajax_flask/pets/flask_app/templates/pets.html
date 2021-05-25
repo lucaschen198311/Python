@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/pets_style.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Pets</title>
+</head>
+<body>
+    <div class="container">
+        <div class="table">
+            <h2>All Pets</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Vote</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if pet_list | length>0 %}
+                        {% for pet in pet_list %}
+                            <tr id = "pet{{pet.id}}">
+                                <td class="id">{{pet.id}}</td>
+                                <td class="name">{{pet.name}}</td>
+                                <td class="type">{{pet.type}}</td>
+                                <td class="vote">{{pet.vote}}</td>
+                                <td>
+                                    <a class="thumup" pet_id="{{pet.id}}" link="/upvote/{{pet.id}}">&#128077</a>
+                                    <a class="thumdown" pet_id="{{pet.id}}" link="/downvote/{{pet.id}}">&#128078</a>
+                                    <a class="delete" pet_id="{{pet.id}}" link="/delete/{{pet.id}}">&#128465</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+        <div class="form">
+            <h2>Add pets</h2>
+            <form action="/add" method="post">
+                <fieldset class="namecheck">
+                    <legend>
+                        <label for="name">Name:</label>
+                    </legend>
+                    <input type="text" name="name">
+                </fieldset>
+                <fieldset class="typecheck">
+                    <legend>
+                        <label for="type">Type:</label>
+                    </legend>
+                    <input type="text" name="type">
+                </fieldset>
+                <input type="submit" value="Add">
+            </form>
+        </div>
+        <script src="{{ url_for('static', filename='js/pets.js') }}"></script>
+    </div>
+</body>
+</html>

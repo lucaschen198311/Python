@@ -1,0 +1,45 @@
+.container{
+    width:80%;
+    border:1px solid black;
+    margin: auto;
+    background-color:lightgray;
+}
+.table{
+    margin:auto;
+    width: 50%;
+}
+.form{
+    margin:auto;
+    width: 50%;
+}
+
+a .thumup{
+    color:green;
+}
+
+fieldset{
+    margin-top: 10px;
+    border:none;
+    padding-left:0px;
+}
+
+.warning{
+    color:red;
+}
+
+table, th, td {
+    border: 1px solid black;
+  }
+
+  table {
+    border-collapse: collapse;
+    margin: 20px 0px 20px 10px;
+    text-align: center;
+  }
+th{
+    background-color: lightgray;
+}
+
+th,td {
+    width: 100px;
+}
