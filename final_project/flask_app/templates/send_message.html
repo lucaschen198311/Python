@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/send_message_style.css') }}">
+    <title>Send Message</title>
+</head>
+<body>
+    <div class="container">
+        <h3>Send Message: </h3>
+        <div class="main">
+            <form action="" method="post">
+                <fieldset>
+                    <legend>
+                        <label for="message">Message</label>
+                    </legend>
+                    <textarea name="message" id="message" cols="50" rows="10">No more than 150 characters...</textarea>
+                </fieldset>
+                <input type="submit" value="Send">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/login_style.css') }}">
+    <title>Login</title>
+</head>
+<body>
+    <div class="container">
+        <div class="main">
+            <div class="login">
+                <h2>Login here!</h2>
+                <form action="/login_validate" method="post">
+                    <fieldset>
+                        <legend>
+                            <label for="email">Email: </label>
+                        </legend>
+                        <input type="text" name="email">
+                    </fieldset>
+                    <fieldset>
+                        <legend>
+                            <label for="password">Password: </label>
+                        </legend>
+                        <input type="password" name="password">
+                    </fieldset>
+                    <input class="button" type="submit" value="Login">
+                </form>
+                <p>Not a member yet? <a href="/regist">Join Now</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/regist_style.css') }}">
+    <title>Registration and Login</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Registration</h1>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul class=flashes>
+                    {% for category, message in messages %}
+                        <li class="{{ category }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        <div class="main">
+            <div class="regist">
+                <h2>Register here!</h2>
+                <form class="regist" action="/regist_validate" method = "post">
+                    <fieldset>
+                        <legend>
+                            <label for="first_name">First Name: </label>
+                        </legend>
+                        <input type="text" name="first_name">
+                    </fieldset>
+                    <fieldset>
+                        <legend>
+                            <label for="last_name">Last Name: </label>
+                        </legend>
+                        <input type="text" name="last_name">
+                    </fieldset>
+                    <fieldset>
+                        <legend>
+                            <label for="username">Username: </label>
+                        </legend>
+                        <input type="text" name="username">
+                    </fieldset>
+                    <fieldset>
+                        <legend>
+                            <label for="email">Email: </label>
+                        </legend>
+                        <input type="text" name="email">
+                    </fieldset>
+                    <fieldset>
+                        <legend>
+                            <label for="password">Password: </label>
+                        </legend>
+                        <input type="password" name="password">
+                    </fieldset>
+                    <fieldset>
+                        <legend>
+                            <label for="confirm password">Confirm Password: </label>
+                        </legend>
+                        <input type="password" name="confirm_password">
+                    </fieldset>
+                    <input class="button" type="submit" value="Register">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

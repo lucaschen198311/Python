@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/display_post_style.css') }}">
+    <title>Display Post</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <p>{{purpose}} >> {{category}} >> {{state}} >> {{city}}</p>
+            <nav>
+                <section>
+                    <a href="">New Post</a>
+                    <a href="">Reply</a>
+                </section>
+                <section>
+                    <a href="">Go Back</a>
+                </section>
+            </nav>
+            <p>Total reply: {{total_reply}}</p>
+        </header>
+        <div class="main">
+            <h4>{{title}}</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>user_info</th>
+                        <th>post_info</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="post_owner">
+                                <section>
+                                    <p>{{username}}</p>
+                                </section>
+                                <a href="">Send Message</a>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="post_body">
+                                <section class="post_header">
+                                    <p>{{username}} post at {{created_at}}</p>
+                                </section>
+                                <section class="post_content">
+                                    <p>{{content}}</p>
+                                </section>
+                            </div>
+                        </td>
+                    </tr>
+                    {% for follow in post_follows %}
+                        <td>
+                            <div class="post_owner">
+                                <section>
+                                    <p>{{follow.username}}</p>
+                                </section>
+                                <a href="">Send Message</a>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="post_body">
+                                <section class="post_header">
+                                    <p>{{follow.username}} reply at {{follow.created_at}}</p>
+                                </section>
+                                <section class="post_content">
+                                    <p>{{follow.content}}</p>
+                                </section>
+                            </div>
+                        </td>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <footer>
+            <nav>
+                <section>
+                    <a href="">New Post</a>
+                    <a href="">Reply</a>
+                </section>
+                <section>
+                    <a href="">Go Back</a>
+                </section>
+            </nav>
+        </footer>
+    </div>
+</body>
+</html>

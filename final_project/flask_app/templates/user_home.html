@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/user_home_style.css') }}">
+    <title>User Home</title>
+</head>
+<body>
+    <div class="container">
+        <div class="nav">
+            <p>Welcome Home, {{username}}!</p>
+            <div class="nav_link">
+                <a href="">Create New Post</a>
+                <a href="">LogOut</a>
+            </div>
+        </div>
+        <div class="main">
+            <div class="posts_follows">
+                <div class="my_post">
+                    <h5>My Post(s)</h5>
+                    {% if my_posts | length >0 %}
+                        <ul>
+                            {% for my_post in my_posts %}
+                                <li><a href="">{{my_post.title}} @{{my_post.created_at}}</a></li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+                <div class="my_follow">
+                    <h5>My Follow(s)</h5>
+                    {% if my_follows | length >0 %}
+                        <ul>
+                            {% for my_follow in my_follows %}
+                                <li><a href="">{{my_follow.title}} @{{my_follow.created_at}}</a></li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="message">
+                <h5>My Messages ({{total_message}})</h5>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Time</th>
+                            <th>Title</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                </table>
+                <tbody>
+                    {% if messages | length >0 %}
+                        {% for message in messages %}
+                            <tr>
+                                <td>{{message.username}}</td>
+                                <td>{{message.created_at}}</td>
+                                <td>{{message.title}}</td>
+                                <td>
+                                    <a href="">Read | </a>
+                                    <a href="">Reply | </a>
+                                    <a href="">Delete</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
+                </tbody>
+            </div>
+            <div class="show_post">
+                <h5>Recent Posts</h5>
+                <form action="" method="post">
+                    <label for="purpose">Poupose</label>
+                    <select name="purpose" id="purpose">
+                        <option value="look_for_job">look for a position or job</option>
+                        <option value="provide_position">provide position or request service</option>
+                        <option value="all">All</option>
+                    </select>
+                    <label for="category">Category: </label>
+                    <select name="service_category" id="service_category">
+                        <option value="education">education</option>
+                        <option value="living">living</option>
+                        <option value="traveling">traveling</option>
+                        <option value="friends">friends</option>
+                        <option value="sports">sports</option>
+                        <option value="tech">tech</option>
+                        <option value="all">All</option>
+                    </select>
+                    <label for="city">City: </label>
+                    <input type="text" name="city">
+                    <label for="state">State: </label>
+                    <input type="text" name="state">
+                    <label for="time_range">Within</label>
+                    <select name="service_category" id="service_category">
+                        <option value="one-day">1 day</option>
+                        <option value="one-week">1 week</option>
+                        <option value="one-month">1 month</option>
+                        <option value="beyond-one-month">more than one month</option>
+                    </select>
+                    <input type="submit" value="Search">
+                </form>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Purpose</th>
+                            <th>Category</th>
+                            <th>Username</th>
+                            <th>Title</th>
+                            <th>Location</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if serach_posts | length >0 %}
+                            {% for post in search_posts %}
+                                <tr>
+                                    <td>{{post.post_purpose}}</td>
+                                    <td>{{post.category}}</td>
+                                    <td>{{post.username}}</td>
+                                    <td>{{post.title}}</td>
+                                    <td>{{post.city}}, {{post.state}}</td>
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

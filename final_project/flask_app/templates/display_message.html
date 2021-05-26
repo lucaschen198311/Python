@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/display_message_style.css') }}">
+    <title>Display Message</title>
+</head>
+<body>
+    <div class="container">
+        <h3>From {{message.username}} </h3>
+        <p>sent at {{message.createed_time}}</p>
+        <textarea name="message" id="message" cols="50" rows="10">{{message.content}}</textarea>
+        <section>
+            <a href="">Go Back</a>
+        </section>
+    </div>
+</body>
+</html>

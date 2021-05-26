@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/home_style.css') }}">
+    <title>Home Page</title>
+</head>
+<body>
+    <div class="container">
+        <div class="nav">
+            <div class="logo">
+                <img src="" alt="">
+            </div>
+            <div class="navlink">
+                <a href="">Sign In</a>
+                <a href=""> Join Us</a>
+                <a href="">Categories</a>
+                <a href="">Contact Us</a>
+            </div>
+        </div>
+        <div class="main">
+            <div>
+                <h3>Eduation</h3>
+                <div class="list">
+                    {% if education_posts | length %}
+                </div>
+            </div>
+        </div>
+        <footer id="contact_us">
+
+        </footer>
+    </div>
+</body>
+</html>
