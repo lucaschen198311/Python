@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/show_pypie_style.css') }}">
+    <title>Show Pypie</title>
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <div class="navlink">
+                <a href="/dashboard">Dashboard</a>
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+        <div class="main">
+            <h3>{{pypie[0].name}} By {{name.first_name}}</h3>
+            <p>{{pypie[0].filling}}</p>
+            <p>with {{pypie[0].crust}}</p>
+            <p>Cast a vote:</p>
+            <a class="button" href="/vote">Delicious</a>
+        </div>
+    </div>
+</body>
+</html>

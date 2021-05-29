@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/edit_pypie_style.css') }}">
+    <title>Edit Pypie</title>
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <div class="navlink">
+                <a href="/dashboard">Dashboard</a>
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+        {% with messages = get_flashed_messages() %}      
+            {% if messages %}                             
+                {% for message in messages %}             
+                    <p class="alert">{{message}}</p>                    
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <div class="main">
+            <h2>Edit {{pypie[0].name}}</h2>
+            <form action="/pypie/update" method="post">
+                <fieldset>
+                    <legend>
+                        <label for="name">Name</label>
+                    </legend>
+                    <input type="text" name="name" value="{{pypie[0].name}}">
+                </fieldset>
+                <fieldset>
+                    <legend>
+                        <label for="Filling">Filling</label>
+                    </legend>
+                    <input type="text" name="filling" value="{{pypie[0].filling}}">
+                </fieldset>
+                <fieldset>
+                    <legend>
+                        <label for="Crust">Crust</label>
+                    </legend>
+                    <input type="text" name="crust" value="{{pypie[0].crust}}">
+                </fieldset>
+                <input class="button" type="submit" value="Edit Pie">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

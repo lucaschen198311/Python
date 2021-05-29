@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dashboard_style.css') }}">
+    <title>Dashboard</title>
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <div class="navlink">
+                <a href="/pies">Pie Derby</a>
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+        {% with messages = get_flashed_messages() %}      
+            {% if messages %}                             
+                {% for message in messages %}             
+                    <p class="alert">{{message}}</p>                    
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <div class="main">
+            <div class="table">
+                <h2>Pypies By {{first_name}}</h2>
+                {% if pypies | length >0 %}
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for pypie in pypies %}
+                                <tr>
+                                    <td>{{pypie.name}}</td>
+                                    <td>
+                                        <a href="/edit/{{pypie.id}}">edit</a>
+                                        <a href="/dashboard/delete/{{pypie.id}}">delete</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% endif %}
+            </div>
+            <div class="form">
+                <h2>Add New Pypie</h2>
+                <form action="/dashboard/add" method="post">
+                    <fieldset>
+                        <legend>
+                            <label for="name">Name</label>
+                        </legend>
+                        <input type="text" name="name">
+                    </fieldset>
+                    <fieldset>
+                        <legend>
+                            <label for="Filling">Filling</label>
+                        </legend>
+                        <input type="text" name="filling">
+                    </fieldset>
+                    <fieldset>
+                        <legend>
+                            <label for="Crust">Crust</label>
+                        </legend>
+                        <input type="text" name="crust">
+                    </fieldset>
+                    <input class="button" type="submit" value="Add Pie">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/pypies_style.css') }}">
+    <title>Pypie Derby</title>
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <h2>Pypie Derby</h2>
+            <div class="navlink">
+                <a href="/dashboard">Dashboard</a>
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+        <div class="main">
+            {% if all_pypies | length >0 %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Pypie By</th>
+                            <th>Votes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for pypie in all_pypies %}
+                            <tr>
+                                <td><a href="/show/{{pypie.id}}">{{pypie.name}}</a></td>
+                                <td>{{pypie.first_name}}</td>
+                                <td>{{pypie.vote}}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
