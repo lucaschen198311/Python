@@ -12,35 +12,39 @@
         <div class="nav">
             <p>Welcome Home, {{username}}!</p>
             <div class="nav_link">
-                <a href="">Create New Post</a>
-                <a href="">LogOut</a>
+                <a href="/create_post">Create New Post</a>
+                <a href="/logout">LogOut</a>
             </div>
         </div>
         <div class="main">
             <div class="posts_follows">
                 <div class="my_post">
-                    <h5>My Post(s)</h5>
-                    {% if my_posts | length >0 %}
+                    <h5>My Post(s): {{total_posts[0].total_posts}} in total</h5>
+                    {% if my_posts|length >0 %}
                         <ul>
                             {% for my_post in my_posts %}
-                                <li><a href="">{{my_post.title}} @{{my_post.created_at}}</a></li>
+                                <li><a href="/post/{{my_post.id}}">{{my_post.title}} @{{my_post.created_at}}</a></li>
                             {% endfor %}
                         </ul>
                     {% endif %}
                 </div>
                 <div class="my_follow">
                     <h5>My Follow(s)</h5>
-                    {% if my_follows | length >0 %}
+                    {% if my_follows|length >0 %}
                         <ul>
                             {% for my_follow in my_follows %}
-                                <li><a href="">{{my_follow.title}} @{{my_follow.created_at}}</a></li>
+                                <li><a href="/post/{{my_follow.id}}">{{my_follow.title}} </a>@{{my_follow.created_at}}</li>
                             {% endfor %}
                         </ul>
                     {% endif %}
                 </div>
             </div>
             <div class="message">
-                <h5>My Messages ({{total_message}})</h5>
+                <h5>My Messages 
+                    {% if total_message|length>0 %}
+                        <span>({{total_message[0].total_received}})</span>
+                    {% endif %}
+                </h5>
                 <table>
                     <thead>
                         <tr>
@@ -50,27 +54,27 @@
                             <th>Actions</th>
                         </tr>
                     </thead>
+                    <tbody>
+                        {% if messages | length >0 %}
+                            {% for message in messages %}
+                                <tr>
+                                    <td>{{message.username}}</td>
+                                    <td>{{message.created_at}}</td>
+                                    <td>{{message.title}}</td>
+                                    <td>
+                                        <a href="/message/{{message.id}}">Read | </a>
+                                        <a href="/send_message/{{message.account_id}}">Reply | </a>
+                                        <a href="/message/{{message.id}}/delete">Delete</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+                    </tbody>
                 </table>
-                <tbody>
-                    {% if messages | length >0 %}
-                        {% for message in messages %}
-                            <tr>
-                                <td>{{message.username}}</td>
-                                <td>{{message.created_at}}</td>
-                                <td>{{message.title}}</td>
-                                <td>
-                                    <a href="">Read | </a>
-                                    <a href="">Reply | </a>
-                                    <a href="">Delete</a>
-                                </td>
-                            </tr>
-                        {% endfor %}
-                    {% endif %}
-                </tbody>
             </div>
             <div class="show_post">
-                <h5>Recent Posts</h5>
-                <form action="" method="post">
+                <h3>Recent Posts</h3>
+                <form action="/search_posts" method="post">
                     <label for="purpose">Poupose</label>
                     <select name="purpose" id="purpose">
                         <option value="look_for_job">look for a position or job</option>
@@ -78,7 +82,7 @@
                         <option value="all">All</option>
                     </select>
                     <label for="category">Category: </label>
-                    <select name="service_category" id="service_category">
+                    <select name="category" id="category">
                         <option value="education">education</option>
                         <option value="living">living</option>
                         <option value="traveling">traveling</option>
@@ -92,11 +96,12 @@
                     <label for="state">State: </label>
                     <input type="text" name="state">
                     <label for="time_range">Within</label>
-                    <select name="service_category" id="service_category">
+                    <select name="time_range" id="time_range">
                         <option value="one-day">1 day</option>
                         <option value="one-week">1 week</option>
                         <option value="one-month">1 month</option>
                         <option value="beyond-one-month">more than one month</option>
+                        <option value="all">All</option>
                     </select>
                     <input type="submit" value="Search">
                 </form>
@@ -111,13 +116,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% if serach_posts | length >0 %}
-                            {% for post in search_posts %}
+                        {% if recent_posts | length >0 %}
+                            {% for post in recent_posts %}
                                 <tr>
                                     <td>{{post.post_purpose}}</td>
                                     <td>{{post.category}}</td>
-                                    <td>{{post.username}}</td>
-                                    <td>{{post.title}}</td>
+                                    <td><a href="/send_message/{{post.account_id}}">{{post.username}}</a></td>
+                                    <td><a href="/post/{{post.id}}">{{post.title}}</a></td>
                                     <td>{{post.city}}, {{post.state}}</td>
                                 </tr>
                             {% endfor %}
@@ -126,6 +131,23 @@
                 </table>
             </div>
         </div>
+        <footer id="contact_us">
+            <section class="logo">
+                <img src="" alt="">
+            </section>
+            <p>© HighwayCampus Ltd. 2021</p>
+            <section class="contact_info">
+                <p>email</p>
+                <p>phone</p>
+            </section>
+            <section class="social">
+                <a href="https://www.facebook.com/">facebook</a>
+                <a href="https://www.linkedin.com/">linkedin</a>
+                <a href="https://twitter.com/">twitter</a>
+                <a href="https://www.instagram.com/">instgram</a>
+                <a href="https://www.youtube.com/">youtube</a>
+            </section>
+        </footer>
     </div>
 </body>
 </html>

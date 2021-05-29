@@ -9,11 +9,12 @@
 </head>
 <body>
     <div class="container">
-        <h3>From {{message.username}} </h3>
-        <p>sent at {{message.createed_time}}</p>
-        <textarea name="message" id="message" cols="50" rows="10">{{message.content}}</textarea>
+        <h3>From {{message[0].username}} </h3>
+        <p>sent at {{message[0].created_at}}</p>
+        <p>Title: {{message[0].title}}</p>
+        <textarea name="message" id="message" cols="50" rows="10">{{message[0].content}}</textarea>
         <section>
-            <a href="">Go Back</a>
+            <a href="/dashboard">Go Back</a>
         </section>
     </div>
 </body>

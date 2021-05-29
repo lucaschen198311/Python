@@ -11,15 +11,28 @@
     <div class="container">
         <h3>Send Message: </h3>
         <div class="main">
-            <form action="" method="post">
+            <form action="/send_message/{{sent_to_id}}/message_validate" method="post">
                 <fieldset>
                     <legend>
-                        <label for="message">Message</label>
+                        <label for="sent_to">Sent To</label>
                     </legend>
-                    <textarea name="message" id="message" cols="50" rows="10">No more than 150 characters...</textarea>
+                    <input type="text" name = "sent_to" value="{{sent_to_username[0].username}}">
+                </fieldset>
+                <fieldset>
+                    <legend>
+                        <label for="title">Title</label>
+                    </legend>
+                    <input type="text" name = "title">
+                </fieldset>
+                <fieldset>
+                    <legend>
+                        <label for="content">Message</label>
+                    </legend>
+                    <textarea name="content" id="content" cols="50" rows="10">No more than 150 characters...</textarea>
                 </fieldset>
                 <input type="submit" value="Send">
             </form>
+            <a href="/dashboard">Go Back</a>
         </div>
     </div>
 </body>

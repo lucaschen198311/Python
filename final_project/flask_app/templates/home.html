@@ -14,22 +14,109 @@
                 <img src="" alt="">
             </div>
             <div class="navlink">
-                <a href="">Sign In</a>
-                <a href=""> Join Us</a>
-                <a href="">Categories</a>
-                <a href="">Contact Us</a>
+                <a href="/login">Sign In</a>
+                <a href="/regist"> Join Us</a>
+                <a href="#categories">Categories</a>
+                <a href="#contact_us">Contact Us</a>
             </div>
         </div>
-        <div class="main">
-            <div>
+        {% with messages = get_flashed_messages() %}      
+            {% if messages %}                             
+                {% for message in messages %}             
+                    <p>{{message}}</p>                    
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <div id="categories">
+            <div class="education">
                 <h3>Eduation</h3>
                 <div class="list">
-                    {% if education_posts | length %}
+                    {% if data.education_posts | length %}
+                        <ul>
+                            {% for education_post in data.education_posts %}
+                                <li><a href="/post/{{education_post.id}}">{{education_post.title}}</a> / <span>{{education_post.created_at}}</span></li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="living">
+                <h3>Living</h3>
+                <div class="list">
+                    {% if data.living_posts | length %}
+                        <ul>
+                            {% for living_post in data.living_posts %}
+                                <li><a href="/post/{{living_post.id}}">{{living_post.title}}</a> / <span>{{living_post.created_at}}</span></li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="traveling">
+                <h3>Traveling</h3>
+                <div class="list">
+                    {% if data.traveling_posts | length %}
+                        <ul>
+                            {% for traveling_post in data.traveling_posts %}
+                                <li><a href="/post/{{traveling_post.id}}">{{traveling_post.title}}</a> / <span>{{traveling_post.created_at}}</span></li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="friends">
+                <h3>Friends</h3>
+                <div class="list">
+                    {% if data.friends_posts | length %}
+                        <ul>
+                            {% for friends_post in data.friends_posts %}
+                                <li><a href="/post/{{friends_post.id}}">{{friends_post.title}}</a> / <span>{{friends_post.created_at}}</span></li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="sports">
+                <h3>Sports</h3>
+                <div class="list">
+                    {% if data.sports_posts | length %}
+                        <ul>
+                            {% for sports_post in data.sports_posts %}
+                                <li><a href="/post/{{sports_post.id}}">{{sports_post.title}}</a> / <span>{{sports_post.created_at}}</span></li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="tech">
+                <h3>Tech</h3>
+                <div class="list">
+                    {% if data.tech_posts | length %}
+                        <ul>
+                            {% for tech_post in data.tech_posts %}
+                                <li><a href="/post/{{tech_post.id}}">{{tech_post.title}}</a> / <span>{{tech_post.created_at}}</span></li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
                 </div>
             </div>
         </div>
         <footer id="contact_us">
-
+            <section class="logo">
+                <img src="" alt="">
+            </section>
+            <p>© HighwayCampus Ltd. 2021</p>
+            <section class="contact_info">
+                <p>email</p>
+                <p>phone</p>
+            </section>
+            <section class="social">
+                <a href="https://www.facebook.com/">facebook</a>
+                <a href="https://www.linkedin.com/">linkedin</a>
+                <a href="https://twitter.com/">twitter</a>
+                <a href="https://www.instagram.com/">instgram</a>
+                <a href="https://www.youtube.com/">youtube</a>
+            </section>
         </footer>
     </div>
 </body>

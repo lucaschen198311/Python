@@ -10,8 +10,15 @@
 <body>
     <div class="container">
         <h3>Create a New Post</h3>
+        {% with messages = get_flashed_messages() %}      
+            {% if messages %}                             
+                {% for message in messages %}             
+                    <p>{{message}}</p>                    
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
         <div class="main">
-            <form action="" method="post">
+            <form action="/post_validate" method="post">
                 <section>
                     <label for="purpose">What is your purpose to post?</label>
                     <select name="purpose" id="purpose">
@@ -21,7 +28,7 @@
                 </section>
                 <section>
                     <label for="category">Choose a service category: </label>
-                    <select name="service_category" id="service_category">
+                    <select name="category" id="category">
                         <option value="education">education</option>
                         <option value="living">living</option>
                         <option value="traveling">traveling</option>
@@ -33,9 +40,9 @@
                 <section>
                     <fieldset>
                         <legend>
-                            <label for="address">Address</label>
+                            <label for="street">Street</label>
                         </legend>
-                        <input type="text" name="address">
+                        <input type="text" name="street">
                     </fieldset>
                     <fieldset>
                         <legend>
@@ -51,23 +58,20 @@
                     </fieldset>
                     <fieldset>
                         <legend>
-                            <label for="zip">Zip Code</label>
+                            <label for="price">Price</label>
                         </legend>
-                        <input type="text" name="zip">
+                        <input type="text" name="price">
                     </fieldset>
-                </section>
-                <section>
-                    <label for="price">Price</label>
-                    <input type="text" name="price">
                 </section>
                 <section>
                     <label for="title">Title</label>
                     <input type="text" name="title">
                 </section>
                 <section>
-                    <textarea name="description" id="description" cols="50" rows="10">No more than 500 characters...</textarea>
+                    <textarea name="description" id="description" cols="80" rows="15">No more than 500 characters...</textarea>
                 </section>
                 <input type="submit" value="Post">
+                <a href="/dashboard">Go Back</a>
             </form>
         </div>
     </div>

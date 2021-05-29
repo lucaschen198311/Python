@@ -9,21 +9,28 @@
 </head>
 <body>
     <div class="container">
+        {% with messages = get_flashed_messages() %}      
+            {% if messages %}                             
+                {% for message in messages %}             
+                    <p>{{message}}</p>                    
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
         <header>
-            <p>{{purpose}} >> {{category}} >> {{state}} >> {{city}}</p>
+            <p>{{post[0].purpose}} >> {{post[0].category}} >> {{post[0].state}} >> {{post[0].city}}</p>
             <nav>
                 <section>
-                    <a href="">New Post</a>
-                    <a href="">Reply</a>
+                    <a href="/create_post">New Post</a>
+                    <a href="/post/{{post[0].id}}/follow">Reply</a>
                 </section>
                 <section>
-                    <a href="">Go Back</a>
+                    <a href="/post/{{post[0].id}}/go_back">Go Back</a>
                 </section>
             </nav>
-            <p>Total reply: {{total_reply}}</p>
+            <p>Total reply: {{total_follows[0].total_posts_followed}}</p>
         </header>
         <div class="main">
-            <h4>{{title}}</h4>
+            <h4>{{post[0].title}}</h4>
             <table>
                 <thead>
                     <tr>
@@ -36,53 +43,57 @@
                         <td>
                             <div class="post_owner">
                                 <section>
-                                    <p>{{username}}</p>
+                                    <p>{{post[0].username}}</p>
                                 </section>
-                                <a href="">Send Message</a>
+                                <a href="/send_message/{{post[0].account_id}}">Send Message</a>
                             </div>
                         </td>
                         <td>
                             <div class="post_body">
                                 <section class="post_header">
-                                    <p>{{username}} post at {{created_at}}</p>
+                                    <p>{{post[0].username}} post at {{post[0].created_at}}</p>
                                 </section>
                                 <section class="post_content">
-                                    <p>{{content}}</p>
+                                    <p>{{post[0].description}}</p>
                                 </section>
                             </div>
                         </td>
                     </tr>
-                    {% for follow in post_follows %}
-                        <td>
-                            <div class="post_owner">
-                                <section>
-                                    <p>{{follow.username}}</p>
-                                </section>
-                                <a href="">Send Message</a>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="post_body">
-                                <section class="post_header">
-                                    <p>{{follow.username}} reply at {{follow.created_at}}</p>
-                                </section>
-                                <section class="post_content">
-                                    <p>{{follow.content}}</p>
-                                </section>
-                            </div>
-                        </td>
-                    {% endfor %}
+                    {% if post_follows | length >0 %}
+                        {% for follow in post_follows %}
+                            <tr>
+                                <td>
+                                    <div class="post_owner">
+                                        <section>
+                                            <p>{{follow.username}}</p>
+                                        </section>
+                                        <a href="/send_message/{{follow.account_id}}">Send Message</a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="post_body">
+                                        <section class="post_header">
+                                            <p>{{follow.username}} reply at {{follow.created_at}}</p>
+                                        </section>
+                                        <section class="post_content">
+                                            <p>{{follow.content}}</p>
+                                        </section>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
                 </tbody>
             </table>
         </div>
         <footer>
             <nav>
                 <section>
-                    <a href="">New Post</a>
-                    <a href="">Reply</a>
+                    <a href="/create_post">New Post</a>
+                    <a href="/post/{{post[0].id}}/follow">Reply</a>
                 </section>
                 <section>
-                    <a href="">Go Back</a>
+                    <a href="/post/{{post[0].id}}/go_back">Go Back</a>
                 </section>
             </nav>
         </footer>

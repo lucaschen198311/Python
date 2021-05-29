@@ -10,11 +10,19 @@
 <body>
     <div class="container">
         <div class="main">
-            <h3>RE: {{post_title}}</h3>
-            <form action="" method="post">
-                <textarea id="post_follwing" rows="5" cols="50">No more than 250 characters...</textarea>
+            {% with messages = get_flashed_messages() %}      
+                {% if messages %}                             
+                    {% for message in messages %}             
+                        <p>{{message}}</p>                    
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <h3>RE: {{post[0].title}}</h3>
+            <form action="/post/{{post[0].id}}/follow_validate" method="post">
+                <textarea name="post_follwing" id="post_follwing" rows="5" cols="50">No more than 250 characters...</textarea>
                 <input type="submit" value="Follow">
             </form>
+            <a href="/post/{{post[0].id}}">Go Back</a>
         </div>
     </div>
 </body>
